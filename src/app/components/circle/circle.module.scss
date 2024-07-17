@@ -1,0 +1,16 @@
+@import "../../../sass/variables";
+@import "../../../sass/mixins";
+
+.circle {
+  @include border($color-primary-m);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 53rem;
+  height: 53rem;
+
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
