@@ -1,0 +1,5 @@
+@import "./variables";
+
+@mixin border {
+  border: $line-width solid $color-primary;
+}

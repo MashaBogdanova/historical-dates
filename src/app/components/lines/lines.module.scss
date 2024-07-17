@@ -1,0 +1,36 @@
+@import "../../../sass/mixins";
+
+.lines {
+  @include border;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  &__colorBorder {
+    position: absolute;
+    left: 0;
+    top: 17rem;
+
+    width: 0.5rem;
+    height: 12rem;
+
+    background: linear-gradient(to bottom, $color-accent, $color-tertiary);
+  }
+
+  &__line {
+    position: absolute;
+    background-color: $color-primary;
+
+    &_horizontal {
+      top: 50%;
+      width: 100%;
+      height: $line-width;
+    }
+
+    &_vertical {
+      left: 50%;
+      width: $line-width;
+      height: 100%;
+    }
+  }
+}
