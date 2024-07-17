@@ -11,7 +11,7 @@ interface Year {
     [key: number]: string;
 }
 
-const dates: Dates = [
+export const dates: Dates = [
     {
         start: 1995,
         end: 1999,

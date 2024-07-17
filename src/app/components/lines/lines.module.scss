@@ -1,14 +1,13 @@
 @import "../../../sass/mixins";
 
 .lines {
-  @include border;
+  @include border ($color-primary-s);
   position: absolute;
   width: 100%;
   height: 100%;
 
   &__colorBorder {
     position: absolute;
-    left: 0;
     top: 17rem;
 
     width: 0.5rem;
@@ -19,7 +18,7 @@
 
   &__line {
     position: absolute;
-    background-color: $color-primary;
+    background-color: $color-primary-s;
 
     &_horizontal {
       top: 50%;

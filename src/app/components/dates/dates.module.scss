@@ -1,0 +1,22 @@
+@import "../../../sass/variables";
+
+.dates {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 12.5rem;
+
+  transform: translate(-50%, -50%);
+
+  &__start {
+    color: $color-secondary;
+  }
+
+  &__end {
+    color: $color-tertiary;
+  }
+}
