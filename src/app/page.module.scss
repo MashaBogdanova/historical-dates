@@ -1,0 +1,16 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+.main {
+  position: relative;
+  left: 32rem;
+  right: 16rem;
+  width: $content-width-desktop;
+  height: 100vh;
+
+  &__title {
+    position: absolute;
+    top: 17rem;;
+    left: 7.8rem;
+  }
+}
