@@ -4,11 +4,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  pointer-events: none;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 12.5rem;
+  column-gap: 9rem;
 
   transform: translate(-50%, -50%);
 

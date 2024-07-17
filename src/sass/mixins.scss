@@ -1,5 +1,15 @@
 @import "./variables";
 
-@mixin border ($color) {
+@mixin border($color) {
   border: $line-width solid $color;
+}
+
+@mixin circleButton($diameter) {
+  @include border($color-primary-l);
+
+  width: $diameter;
+  height: $diameter;
+
+  background-color: $color-background;
+  cursor: pointer;
 }

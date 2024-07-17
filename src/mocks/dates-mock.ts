@@ -3,10 +3,11 @@ type Dates = CustomDate[];
 interface CustomDate {
     start: number;
     end: number;
-    theme: "Технологии" | "Кино" | "Литература" | "Музыка" | "Спорт" | "Наука";
+    theme: Theme;
     years: Year;
 }
 
+export type Theme = "Технологии" | "Кино" | "Литература" | "Музыка" | "Спорт" | "Наука";
 interface Year {
     [key: number]: string;
 }
