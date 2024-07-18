@@ -8,6 +8,10 @@
   width: $content-width-desktop;
   height: 100vh;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
   &__title {
     position: absolute;
     top: 17rem;;
