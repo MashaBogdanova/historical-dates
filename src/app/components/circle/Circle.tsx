@@ -4,7 +4,7 @@ import styles from "./circle.module.scss";
 import generatePoints from "@/utils/generatePoints";
 import {useEffect, useRef, useState} from "react";
 
-export default function Circle({setCurrentPeriodIndex}: (number) => void) {
+export default function Circle({offset, setCurrentPeriodIndex}) {
     // You can dynamically change number of points, for example, it may depend on backand response
     // Circle radius is calculated dynamically
 
@@ -18,7 +18,7 @@ export default function Circle({setCurrentPeriodIndex}: (number) => void) {
         }
     }, []);
 
-    const points = generatePoints(radius, setCurrentPeriodIndex);
+    const points = generatePoints(radius, offset, setCurrentPeriodIndex);
 
     return (
         <section className={styles.circle} ref={circleElement}>

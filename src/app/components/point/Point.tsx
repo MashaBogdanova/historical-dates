@@ -11,6 +11,7 @@ interface Props {
 }
 
 function Point({index, x, y, theme, setCurrentPeriodIndex}: Props) {
+    
     return (
         <div
             className={styles.point}

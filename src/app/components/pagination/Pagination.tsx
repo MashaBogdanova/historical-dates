@@ -7,9 +7,10 @@ import {dates} from "@/mocks/dates-mock";
 
 interface Props {
     currentPeriodIndex: number;
-    setCurrentPeriodIndex: (number) => void
+    setCurrentPeriodIndex: (number) => void;
+    setOffset: (number) => void;
 }
-function Pagination({currentPeriodIndex, setCurrentPeriodIndex}: Props) {
+function Pagination({currentPeriodIndex, setCurrentPeriodIndex, setOffset}: Props) {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
@@ -26,6 +27,14 @@ function Pagination({currentPeriodIndex, setCurrentPeriodIndex}: Props) {
 
     const isLeftButtonInactive = (page) => page === 1;
     const isRightButtonInactive = (page, total) => page === total;
+    function handleLeftClick (){
+        setCurrentPage(currentValue => currentValue > 1 ? currentValue - 1 : currentValue);
+        setOffset( currentValue => currentValue + 1);
+    }
+    function handleRightClick (){
+        setCurrentPage(currentValue => currentValue < totalPagesNumber ? currentValue + 1 : currentValue)
+        setOffset( currentValue => currentValue - 1);
+    }
 
     return (
         <div className={styles.pagination}>
@@ -33,7 +42,7 @@ function Pagination({currentPeriodIndex, setCurrentPeriodIndex}: Props) {
             <div className={styles.pagination__buttonsWrapper}>
                 <button
                     className={`${styles.pagination__button} ${isLeftButtonInactive(currentPage) ? styles.pagination__button_inactive : ''}`}
-                    onClick={() => setCurrentPage(currentValue => currentValue > 1 ? currentValue - 1 : currentValue)}
+                    onClick={handleLeftClick}
                     disabled={isLeftButtonInactive(currentPage)}
                 >
                     <Image
@@ -45,7 +54,7 @@ function Pagination({currentPeriodIndex, setCurrentPeriodIndex}: Props) {
                 </button>
                 <button
                     className={`${styles.pagination__button} ${isRightButtonInactive(currentPage, totalPagesNumber) ? styles.pagination__button_inactive : ''}`}
-                    onClick={() => setCurrentPage(currentValue => currentValue < totalPagesNumber ? currentValue + 1 : currentValue)}
+                    onClick={handleRightClick}
                     disabled={isRightButtonInactive(currentPage, totalPagesNumber)}
                 >
                     <Image
