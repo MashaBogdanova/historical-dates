@@ -1,0 +1,26 @@
+@import "../../../sass/variables";
+@import "../../../sass/mixins";
+
+.pagination {
+  position: absolute;
+  top: 69.7rem;
+  left: $content-left-space;
+
+  &__currentPage {
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+  }
+
+  &__buttonsWrapper {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__button {
+    @include circleButton(5rem);
+
+    &_inactive {
+      @include border($color-primary-s);
+    }
+  }
+}

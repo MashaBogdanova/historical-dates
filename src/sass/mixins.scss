@@ -7,9 +7,15 @@
 @mixin circleButton($diameter) {
   @include border($color-primary-l);
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: $diameter;
   height: $diameter;
 
+  color: $color-primary;
   background-color: $color-background;
+  border-radius: 50%;
   cursor: pointer;
 }

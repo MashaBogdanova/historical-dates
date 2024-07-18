@@ -4,10 +4,6 @@
 .point {
   position: absolute;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   width: 0.5rem;
   height: 0.5rem;
 
@@ -28,8 +24,7 @@
 
   &__number {
     display: none;
-    font-size: 1.6rem;
-    font-weight: 400;
+    font-size: 2rem;
   }
 
   &__theme {

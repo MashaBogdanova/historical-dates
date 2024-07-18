@@ -1,0 +1,49 @@
+'use client';
+
+import React, {useEffect, useState} from 'react';
+import Image from 'next/image';
+import styles from "./pagination.module.scss";
+import {dates} from "@/mocks/dates-mock";
+
+function Pagination() {
+    const arrowSize = 12.5;
+    const totalPagesNumber = dates.length;
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const isLeftButtonInactive = (page) => page === 1;
+    const isRightButtonInactive = (page, total) => page === total;
+
+    return (
+        <div className={styles.pagination}>
+            <p className={styles.pagination__currentPage}>0{currentPage}/0{totalPagesNumber}</p>
+            <div className={styles.pagination__buttonsWrapper}>
+                <button
+                    className={`${styles.pagination__button} ${isLeftButtonInactive(currentPage) ? styles.pagination__button_inactive : ''}`}
+                    onClick={() => setCurrentPage(currentValue => currentValue > 1 ? currentValue - 1 : currentValue)}
+                    disabled={isLeftButtonInactive(currentPage)}
+                >
+                    <Image
+                        src={isLeftButtonInactive(currentPage) ? "/pagination/arrow-left-inactive.svg" : "/pagination/arrow-left.svg"}
+                        width={arrowSize}
+                        height={arrowSize}
+                        alt="previous period"
+                    />
+                </button>
+                <button
+                    className={`${styles.pagination__button} ${isRightButtonInactive(currentPage, totalPagesNumber) ? styles.pagination__button_inactive : ''}`}
+                    onClick={() => setCurrentPage(currentValue => currentValue < totalPagesNumber ? currentValue + 1 : currentValue)}
+                    disabled={isRightButtonInactive(currentPage, totalPagesNumber)}
+                >
+                    <Image
+                        src={isRightButtonInactive(currentPage, totalPagesNumber) ? "/pagination/arrow-right-inactive.svg" : "/pagination/arrow-right.svg"}
+                        width={arrowSize}
+                        height={arrowSize}
+                        alt="next period"
+                    />
+                </button>
+            </div>
+        </div>
+    );
+}
+
+export default Pagination;
