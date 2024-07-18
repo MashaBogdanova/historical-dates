@@ -4,7 +4,7 @@
 .slider {
   display: flex;
   gap: 8rem;
-  margin: 0 4rem 10rem $content-left-space;
+  margin: 84rem 4rem 0 $content-left-space;
 
   &__slidesContainer {
     margin-right: 16rem;
@@ -14,6 +14,7 @@
   &__title {
     font-size: 2.5rem;
     color: $color-accent;
+    margin-bottom: 1.5rem;
   }
 
   &__text {

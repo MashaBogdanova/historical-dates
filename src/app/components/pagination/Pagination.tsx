@@ -5,10 +5,24 @@ import Image from 'next/image';
 import styles from "./pagination.module.scss";
 import {dates} from "@/mocks/dates-mock";
 
-function Pagination() {
+interface Props {
+    currentPeriodIndex: number;
+    setCurrentPeriodIndex: (number) => void
+}
+function Pagination({currentPeriodIndex, setCurrentPeriodIndex}: Props) {
+    const [currentPage, setCurrentPage] = useState(1);
+
+    useEffect(() => {
+        setCurrentPeriodIndex(currentPage - 1);
+    }, [currentPage]);
+
+    useEffect(() => {
+        setCurrentPage(currentPeriodIndex + 1);
+    }, [currentPeriodIndex])
+
+
     const arrowSize = 12.5;
     const totalPagesNumber = dates.length;
-    const [currentPage, setCurrentPage] = useState(1);
 
     const isLeftButtonInactive = (page) => page === 1;
     const isRightButtonInactive = (page, total) => page === total;

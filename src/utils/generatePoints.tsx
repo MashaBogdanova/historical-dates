@@ -1,7 +1,7 @@
 import Point from "@/app/components/point/Point";
-import {dates} from "@/mocks/dates-mock";
+import {dates, Period} from "@/mocks/dates-mock";
 
-export default function generatePoints(radius: number) {
+export default function generatePoints(radius: number, setCurrentPeriodIndex: (number) => void) {
     const numberOfPoints = dates.length;
 
     return dates.map((date, index) => {
@@ -9,6 +9,7 @@ export default function generatePoints(radius: number) {
         const x = radius + radius * (Math.cos(angle));
         const y = radius + radius * (Math.sin(angle));
 
-        return <Point key={index} index={index} x={x} y={y} theme={date.theme}/>
+        return <Point key={index} index={index} x={x} y={y} theme={date.theme}
+                      setCurrentPeriodIndex={setCurrentPeriodIndex}/>
     });
 };
