@@ -18,8 +18,6 @@ export default function Slider({period}: Period) {
                 spaceBetween={80}
                 slidesPerView={3}
                 navigation
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
             >
                 {years.map((year) => {
                     return (
