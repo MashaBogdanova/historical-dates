@@ -21,7 +21,7 @@
     background-color: $color-primary-s;
 
     &_horizontal {
-      top: 50%;
+      top: $circle-top-space;
       width: 100%;
       height: $line-width;
     }

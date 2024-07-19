@@ -5,7 +5,7 @@
   @include border($color-primary-m);
 
   position: absolute;
-  top: 50%;
+  top: $circle-top-space;
   left: 50%;
 
   width: 53rem;

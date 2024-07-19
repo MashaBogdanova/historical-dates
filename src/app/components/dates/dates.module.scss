@@ -2,14 +2,14 @@
 
 .dates {
   position: absolute;
-  top: 50%;
+  top: $circle-top-space;
   left: 50%;
   pointer-events: none;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 9rem;
+  column-gap: 8rem;
 
   transform: translate(-50%, -50%);
 
