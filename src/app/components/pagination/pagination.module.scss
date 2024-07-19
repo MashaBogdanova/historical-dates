@@ -2,6 +2,8 @@
 @import "../../../sass/mixins";
 
 .pagination {
+  position: relative;
+
   margin-left: $content-left-space;
   margin-bottom: 5.6rem;
 

@@ -1,4 +1,4 @@
-type Dates = Period[];
+export type DatesData = Period[];
 
 export interface Period {
     start: number;
@@ -13,7 +13,7 @@ export interface Years {
     [key: number]: string;
 }
 
-export const dates: Dates = [
+export const datesData: DatesData = [
     {
         start: 1995,
         end: 1999,

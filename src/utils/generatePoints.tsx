@@ -9,14 +9,14 @@ interface Props {
 }
 
 export default function generatePoints({radius, offset, dates, setCurrentPeriodIndex}: Props) {
-    const numberOfPoints = dates?.length;
+        const numberOfPoints = dates.length;
 
-    return dates?.map((date, index) => {
-        const angle = ((index - 1 + offset) / numberOfPoints) * (2 * Math.PI);
-        const x = radius + radius * (Math.cos(angle));
-        const y = radius + radius * (Math.sin(angle));
+        return dates.map((date, index) => {
+            const angle = ((index - 1 + offset) / numberOfPoints) * (2 * Math.PI);
+            const x = radius + radius * (Math.cos(angle));
+            const y = radius + radius * (Math.sin(angle));
 
-        return <Point key={index} index={index} x={x} y={y} theme={date.theme}
-                      setCurrentPeriodIndex={setCurrentPeriodIndex}/>
-    });
+            return <Point key={index} index={index} x={x} y={y} theme={date.theme}
+                          setCurrentPeriodIndex={setCurrentPeriodIndex}/>
+        });
 };

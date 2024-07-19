@@ -26,7 +26,6 @@ export default function Circle({offset, dates, setCurrentPeriodIndex}: Props) {
     }, []);
 
     const points = generatePoints({radius, offset, dates, setCurrentPeriodIndex});
-
     return (
         <section className={styles.circle} ref={circleElement}>
             {points}

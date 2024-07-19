@@ -1,0 +1,31 @@
+@import "../../../../sass/variables";
+@import "../../../../sass/mixins";
+
+.preloader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: 100vh;
+  background-color: $color-background;
+
+  &__spinner {
+    @include animation-spin;
+
+    width: 5rem;
+    height: 5rem;
+
+    border: 0.4rem solid $color-primary-s;
+    border-top: 0.4rem solid $color-primary;
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+  }
+
+  &__title {
+    font-size: 2rem;
+  }
+}
+
+
