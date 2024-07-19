@@ -3,8 +3,15 @@
 import styles from "./circle.module.scss";
 import generatePoints from "@/utils/generatePoints";
 import {useEffect, useRef, useState} from "react";
+import {Period} from "@/mocks/dates-mock";
 
-export default function Circle({offset, setCurrentPeriodIndex}) {
+interface Props {
+    offset: number;
+    dates: Period[];
+    setCurrentPeriodIndex: (number) => void;
+}
+
+export default function Circle({offset, dates, setCurrentPeriodIndex}: Props) {
     // You can dynamically change number of points, for example, it may depend on backand response
     // Circle radius is calculated dynamically
 
@@ -18,7 +25,7 @@ export default function Circle({offset, setCurrentPeriodIndex}) {
         }
     }, []);
 
-    const points = generatePoints(radius, offset, setCurrentPeriodIndex);
+    const points = generatePoints({radius, offset, dates, setCurrentPeriodIndex});
 
     return (
         <section className={styles.circle} ref={circleElement}>

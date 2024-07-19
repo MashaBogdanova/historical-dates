@@ -4,12 +4,13 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
 import 'swiper/scss';
 import 'swiper/css/navigation';
-import {Period} from "@/mocks/dates-mock";
+import {Period, Years} from "@/mocks/dates-mock";
 import styles from "./slider.module.scss";
 import React from "react";
 
-export default function Slider({period}: Period) {
-    const years = Object.keys(period.years);
+
+export default function Slider({events}: Years) {
+    const years = Object.keys(events);
 
     return (
         <section className={styles.slider}>
@@ -23,7 +24,7 @@ export default function Slider({period}: Period) {
                     return (
                         <SwiperSlide key={year}>
                             <h4 className={styles.slider__title}>{year}</h4>
-                            <p className={styles.slider__text}>{period.years[year]}</p>
+                            <p className={styles.slider__text}>{events[year]}</p>
                         </SwiperSlide>
                     )
                 })}

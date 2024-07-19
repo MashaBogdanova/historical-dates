@@ -9,7 +9,7 @@ export interface Period {
 
 export type Theme = "Технологии" | "Кино" | "Литература" | "Музыка" | "Спорт" | "Наука";
 
-interface Years {
+export interface Years {
     [key: number]: string;
 }
 

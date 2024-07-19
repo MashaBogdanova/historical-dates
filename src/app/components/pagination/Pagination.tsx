@@ -3,14 +3,14 @@
 import React, {useEffect, useState} from 'react';
 import Image from 'next/image';
 import styles from "./pagination.module.scss";
-import {dates} from "@/mocks/dates-mock";
 
 interface Props {
     currentPeriodIndex: number;
     setCurrentPeriodIndex: (number) => void;
     setOffset: (number) => void;
+    totalPagesNumber: number;
 }
-function Pagination({currentPeriodIndex, setCurrentPeriodIndex, setOffset}: Props) {
+function Pagination({currentPeriodIndex, setCurrentPeriodIndex, setOffset, totalPagesNumber}: Props) {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
@@ -23,7 +23,6 @@ function Pagination({currentPeriodIndex, setCurrentPeriodIndex, setOffset}: Prop
 
 
     const arrowSize = 12.5;
-    const totalPagesNumber = dates.length;
 
     const isLeftButtonInactive = (page) => page === 1;
     const isRightButtonInactive = (page, total) => page === total;

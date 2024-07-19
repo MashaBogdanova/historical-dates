@@ -25,8 +25,9 @@ export default function Home() {
                 currentPeriodIndex={currentPeriodIndex}
                 setCurrentPeriodIndex={setCurrentPeriodIndex}
                 setOffset={setOffset}
+                totalPagesNumber={dates.length}
             />
-            <Slider period={currentPeriodData}/>
+            <Slider events={currentPeriodData.years}/>
         </main>
     );
 }
