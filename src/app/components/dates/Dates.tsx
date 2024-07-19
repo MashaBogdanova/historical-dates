@@ -1,12 +1,15 @@
 import React from 'react';
 import styles from "./dates.module.scss";
-import {dates} from "@/mocks/dates-mock";
 
-const Dates = () => {
+interface Props {
+    start: number;
+    end: number;
+}
+const Dates = ({startDate, endDate}: Props) => {
     return (
         <section className={styles.dates}>
-            <h2 className={styles.dates__start}>{dates[0].start}</h2>
-            <h2 className={styles.dates__end}>{dates[0].end}</h2>
+            <h2 className={styles.dates__start}>{startDate}</h2>
+            <h2 className={styles.dates__end}>{endDate}</h2>
         </section>
     );
 };

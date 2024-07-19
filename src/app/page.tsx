@@ -7,7 +7,7 @@ import Dates from "@/app/components/dates/Dates";
 import Pagination from "@/app/components/pagination/Pagination";
 import Slider from "@/app/components/slider/Slider";
 import {dates} from "@/mocks/dates-mock";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
             <h1 className={styles.main__title}>Исторические<br/>даты</h1>
             <Lines/>
             <Circle offset={offset} setCurrentPeriodIndex={setCurrentPeriodIndex}/>
-            <Dates/>
+            <Dates startDate={currentPeriodData.start} endDate={currentPeriodData.end}/>
             <Pagination
                 currentPeriodIndex={currentPeriodIndex}
                 setCurrentPeriodIndex={setCurrentPeriodIndex}
