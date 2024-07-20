@@ -21,5 +21,24 @@
   &__text {
     font-size: 2rem;
   }
+
+  &__button {
+    @include circleButton(7rem);
+
+    position: relative;
+    z-index: 2;
+    align-self: center;
+
+    height: 4rem;
+
+    background-color: $color-light;
+    box-shadow: 0 0 1.5rem 0 rgba(56, 119, 238, 0.1);
+    border: none;
+  }
+
+  &__arrow {
+    font-size: 1.8rem;
+    color: $color-accent;
+  }
 }
 
