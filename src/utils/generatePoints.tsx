@@ -5,9 +5,10 @@ interface Props {
     radius: number;
     dates: Period[];
     setCurrentPeriodIndex: (number) => void;
+    rotateCircle: (startPointOffset: number) => void;
 }
 
-export default function generatePoints({radius, dates, setCurrentPeriodIndex}: Props) {
+export default function generatePoints({radius, dates, setCurrentPeriodIndex, rotateCircle}: Props) {
         const numberOfPoints = dates.length;
 
         return dates.map((date, index) => {
@@ -16,6 +17,6 @@ export default function generatePoints({radius, dates, setCurrentPeriodIndex}: P
             const y = radius + radius * (Math.sin(angle));
 
             return <Point key={index} index={index} x={x} y={y} theme={date.theme}
-                          setCurrentPeriodIndex={setCurrentPeriodIndex}/>
+                          setCurrentPeriodIndex={setCurrentPeriodIndex} rotateCircle={rotateCircle}/>
         });
 };

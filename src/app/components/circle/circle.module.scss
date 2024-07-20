@@ -4,16 +4,14 @@
 .circle {
   @include border($color-primary-m);
 
-  position: absolute;
-  top: $circle-top-space;
-  left: 50%;
+  position: relative;
+  top: calc($circle-top-space - 26.5rem);
+  margin: 0 auto;
 
   width: 53rem;
   height: 53rem;
 
   border-radius: 50%;
 
-  transform: translate(-50%, -50%);
-  transform-origin: 0 0;
   transition: all 1s ease-out;
 }

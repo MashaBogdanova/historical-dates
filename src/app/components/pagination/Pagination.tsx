@@ -7,10 +7,10 @@ import {CgChevronLeft, CgChevronRight} from "react-icons/cg";
 interface Props {
     currentPeriodIndex: number;
     setCurrentPeriodIndex: (number) => void;
-    setOffset: (number) => void;
+    setOffsetAngle: (offsetAngle: number) => void;
     totalPagesNumber: number;
 }
-function Pagination({currentPeriodIndex, setCurrentPeriodIndex, setOffset, totalPagesNumber}: Props) {
+function Pagination({currentPeriodIndex, setCurrentPeriodIndex, setOffsetAngle, totalPagesNumber}: Props) {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
@@ -28,11 +28,11 @@ function Pagination({currentPeriodIndex, setCurrentPeriodIndex, setOffset, total
     const isRightButtonInactive = (page, total) => page === total;
     function handleLeftClick (){
         setCurrentPage(currentValue => currentValue > 1 ? currentValue - 1 : currentValue);
-        setOffset( currentValue => currentValue + 1);
+        setOffsetAngle( (currentValue => currentValue + 360 / totalPagesNumber) as number);
     }
     function handleRightClick (){
         setCurrentPage(currentValue => currentValue < totalPagesNumber ? currentValue + 1 : currentValue)
-        setOffset( currentValue => currentValue - 1);
+        setOffsetAngle( (currentValue => currentValue - 360 / totalPagesNumber) as number);
     }
 
     return (

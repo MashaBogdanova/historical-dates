@@ -14,7 +14,7 @@ import Preloader from "@/app/components/ui/preloader/Preloader";
 export default function Home() {
     const [dates, setDates] = useState<DatesData>([]);
     const [currentPeriodIndex, setCurrentPeriodIndex] = useState(0);
-    const [offset, setOffset] = useState(0);
+    const [offsetAngle, setOffsetAngle] = useState(0);
 
     useEffect(() => {
         setDates(datesData);
@@ -30,12 +30,12 @@ export default function Home() {
         <main className={styles.main}>
             <h1 className={styles.main__title}>Исторические<br/>даты</h1>
             <Lines/>
-            <Circle offset={offset} setCurrentPeriodIndex={setCurrentPeriodIndex} dates={dates}/>
+            <Circle offsetAngle={offsetAngle} setCurrentPeriodIndex={setCurrentPeriodIndex} dates={dates} setOffsetAngle={setOffsetAngle}/>
             <Dates startDate={currentPeriodData.start} endDate={currentPeriodData.end}/>
             <Pagination
                 currentPeriodIndex={currentPeriodIndex}
                 setCurrentPeriodIndex={setCurrentPeriodIndex}
-                setOffset={setOffset}
+                setOffsetAngle={setOffsetAngle}
                 totalPagesNumber={dates.length}
             />
             <Slider events={currentPeriodData.years}/>
