@@ -24,4 +24,12 @@
       @include border($color-primary-s);
     }
   }
+
+  &__arrow {
+    font-size: 2.2rem;
+    color: $color-primary;
+    &_inactive {
+      color: $color-primary-s;
+    }
+  }
 }

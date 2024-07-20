@@ -1,8 +1,8 @@
 'use client';
 
 import React, {useEffect, useState} from 'react';
-import Image from 'next/image';
 import styles from "./pagination.module.scss";
+import {CgChevronLeft, CgChevronRight} from "react-icons/cg";
 
 interface Props {
     currentPeriodIndex: number;
@@ -40,28 +40,18 @@ function Pagination({currentPeriodIndex, setCurrentPeriodIndex, setOffset, total
             <p className={styles.pagination__currentPage}>0{currentPage}/0{totalPagesNumber}</p>
             <div className={styles.pagination__buttonsWrapper}>
                 <button
-                    className={`${styles.pagination__button} ${isLeftButtonInactive(currentPage) ? styles.pagination__button_inactive : ''}`}
+                    className={`${styles.pagination__button} ${currentPage === 1 ? styles.pagination__button_inactive : ''}`}
                     onClick={handleLeftClick}
                     disabled={isLeftButtonInactive(currentPage)}
                 >
-                    <Image
-                        src={isLeftButtonInactive(currentPage) ? "/pagination/arrow-left-inactive.svg" : "/pagination/arrow-left.svg"}
-                        width={arrowSize}
-                        height={arrowSize}
-                        alt="previous period"
-                    />
+                    <CgChevronLeft className={`${styles.pagination__arrow} ${currentPage === 1 ? styles.pagination__arrow_inactive : ''}`}/>
                 </button>
                 <button
-                    className={`${styles.pagination__button} ${isRightButtonInactive(currentPage, totalPagesNumber) ? styles.pagination__button_inactive : ''}`}
+                    className={`${styles.pagination__button} ${currentPage === totalPagesNumber ? styles.pagination__button_inactive : ''}`}
                     onClick={handleRightClick}
                     disabled={isRightButtonInactive(currentPage, totalPagesNumber)}
                 >
-                    <Image
-                        src={isRightButtonInactive(currentPage, totalPagesNumber) ? "/pagination/arrow-right-inactive.svg" : "/pagination/arrow-right.svg"}
-                        width={arrowSize}
-                        height={arrowSize}
-                        alt="next period"
-                    />
+                    <CgChevronRight className={`${styles.pagination__arrow} ${currentPage === totalPagesNumber ? styles.pagination__arrow_inactive : ''}`}/>
                 </button>
             </div>
         </div>
