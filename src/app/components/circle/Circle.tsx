@@ -17,6 +17,7 @@ export default function Circle({offset, dates, setCurrentPeriodIndex}: Props) {
 
     const circleElement = useRef<HTMLDivElement | null>(null);
     const [radius, setRadius] = useState(256);
+    const [rotateOffset, setRotateOffset] = useState(0);
 
     useEffect(() => {
         if (circleElement.current) {
@@ -25,9 +26,13 @@ export default function Circle({offset, dates, setCurrentPeriodIndex}: Props) {
         }
     }, []);
 
-    const points = generatePoints({radius, offset, dates, setCurrentPeriodIndex});
+    useEffect(() => {
+        setRotateOffset(360 / dates.length * offset);
+    }, [offset]);
+
+    const points = generatePoints({radius, dates, setCurrentPeriodIndex});
     return (
-        <section className={styles.circle} ref={circleElement}>
+        <section style={{ rotate: `${rotateOffset}deg` }} className={styles.circle} ref={circleElement}>
             {points}
         </section>
     )
