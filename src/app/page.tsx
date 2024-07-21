@@ -8,7 +8,7 @@ import Pagination from "@/app/components/pagination/Pagination";
 import Slider from "@/app/components/slider/Slider";
 import {datesData, DatesData} from "@/mocks/dates-mock";
 import {useEffect, useState} from "react";
-import Preloader from "@/app/components/ui/preloader/Preloader";
+import Preloader from "@/app/components/shared/preloader/Preloader";
 
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
                 setOffsetAngle={setOffsetAngle}
                 totalPagesNumber={dates.length}
             />
-            <Slider events={currentPeriodData.years}/>
+            <Slider events={currentPeriodData.years} theme={currentPeriodData.theme}/>
         </main>
     );
 }

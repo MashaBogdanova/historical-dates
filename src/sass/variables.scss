@@ -1,5 +1,6 @@
 $color-primary: #42567a;
-$color-primary-l: rgba(66, 86, 122, 0.5);
+$color-primary-xl: rgba(66, 86, 122, 0.5);
+$color-primary-l: rgba(66, 86, 122, 0.4);
 $color-primary-m: rgba(66, 86, 122, 0.2);
 $color-primary-s: rgba(66, 86, 122, 0.1);
 $color-secondary: #5e5fef;
@@ -10,7 +11,8 @@ $color-light: #ffffff;
 
 $content-width-desktop: 144rem;
 
-$content-left-space: 8rem;
+$content-left-space-desktop: 8rem;
+$content-left-space-mobile: 2rem;
 $circle-top-space: 44%;
 
 $line-width: 1px;

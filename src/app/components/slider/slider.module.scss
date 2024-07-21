@@ -6,27 +6,58 @@
   z-index: 1;
 
   display: flex;
-  gap: 8rem;
+  flex-direction: column;
+  gap: 2rem;
   height: 15rem;
-  margin: 0 4rem 10.4rem $content-left-space;
+
+  @include media-mobile {
+    flex-grow: 1;
+    margin: 0 0 10.5rem 0;
+  }
+
+  &__sliderContainer {
+    display: flex;
+    gap: 8rem;
+    padding: 0 4rem;
+
+    @include media-mobile {
+      padding: 0;
+    }
+  }
 
   &__slidesContainer {
     margin-right: 16rem;
     background-color: #5e5fef;
   }
 
-  &__title {
-    font-size: 2.5rem;
+  &__year {
     color: $color-accent;
     margin-bottom: 1.5rem;
-  }
-
-  &__text {
-    font-size: 2rem;
   }
 
   &__arrow {
     font-size: 1.8rem;
     color: $color-accent;
+  }
+
+  &__theme {
+    display: none;
+
+    @include media-mobile {
+      display: flex;
+
+    }
+  }
+
+  &__divider {
+    display: none;
+    margin-right: 2rem;
+
+    border: none;
+    border-top: $line-width solid $color-primary-m;
+
+    @include media-mobile {
+      display: flex;
+    }
   }
 }

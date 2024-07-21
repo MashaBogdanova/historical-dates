@@ -32,4 +32,7 @@
       height: 100%;
     }
   }
+  @include media-mobile {
+    display: none;
+  }
 }

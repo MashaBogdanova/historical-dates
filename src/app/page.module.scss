@@ -15,6 +15,21 @@
   &__title {
     position: absolute;
     top: 17rem;;
-    left: $content-left-space;
+    left: $content-left-space-desktop;
+
+    @include media-mobile {
+      position: unset;
+    }
+  }
+
+  @include media-mobile {
+    position: relative;
+    left: 0;
+    right: 0;
+
+    gap: 5rem;
+    width: unset;
+    padding-top: 6rem;
+    margin-left: $content-left-space-mobile;
   }
 }

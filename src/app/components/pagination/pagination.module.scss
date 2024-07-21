@@ -4,22 +4,76 @@
 .pagination {
   position: relative;
 
+  display: flex;
+
   width: max-content;
-  margin-left: $content-left-space;
+  margin-left: $content-left-space-desktop;
   margin-bottom: 5.6rem;
+
+  @include media-mobile {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+
+    width: 100%;
+    margin: 0 0 1rem;
+  }
+
+  &__dots {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: auto;
+
+    transform: translate(-50%, -50%);
+
+    @include media-mobile {
+      display: flex;
+    }
+  }
+
+  &__dot {
+    @include circleButton(0.6rem);
+    background-color: $color-primary-l;
+    border: none;
+
+    transition: background-color 300ms ease-out;
+
+    &_active {
+      background-color: $color-primary;
+    }
+  }
 
   &__currentPage {
     margin-bottom: 2rem;
     font-size: 1.4rem;
+
+    @include media-mobile {
+      margin-bottom: 1rem;
+    }
   }
 
-  &__buttonsWrapper {
+  &__buttonsContainer {
     display: flex;
     gap: 2rem;
+
+    @include media-mobile {
+      gap: 0.8rem;
+    }
   }
 
   &__button {
     @include circleButton(5rem);
+
+    @include media-mobile {
+      @include circleButton(2.5rem);
+    }
 
     &_inactive {
       @include border($color-primary-s);
@@ -29,6 +83,11 @@
   &__arrow {
     font-size: 2.2rem;
     color: $color-primary;
+
+    @include media-mobile {
+      font-size: 1.2rem;
+    }
+
     &_inactive {
       color: $color-primary-s;
     }

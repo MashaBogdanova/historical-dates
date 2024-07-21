@@ -18,3 +18,24 @@
 .swiper-button-disabled {
   opacity: 0;
 }
+
+.swiper-slide {
+  opacity: 0;
+  @include animation-fadeIn(1000ms)
+}
+
+@include media-mobile {
+  .swiper-slide {
+    width: 17rem !important;
+    opacity: 40%;
+
+    &-active {
+      opacity: 100%;
+    }
+  }
+
+  .slider__button_left,
+  .slider__button_right {
+    display: none;
+  }
+}

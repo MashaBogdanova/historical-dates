@@ -1,4 +1,5 @@
 @import "../../../sass/variables";
+@import "../../../sass/mixins";
 
 .dates {
   position: absolute;
@@ -15,9 +16,22 @@
 
   &__start {
     color: $color-secondary;
+
+    @include media-mobile {
+      color: $color-accent;
+    }
   }
 
   &__end {
     color: $color-tertiary;
+  }
+
+  @include media-mobile {
+    position: unset;
+
+    justify-content: unset;
+    column-gap: 1rem;
+
+    transform: unset;
   }
 }

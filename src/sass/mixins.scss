@@ -5,7 +5,7 @@
 }
 
 @mixin circleButton($diameter) {
-  @include border($color-primary-l);
+  @include border($color-primary-xl);
 
   display: flex;
   justify-content: center;
@@ -28,5 +28,21 @@
     100% {
       transform: rotate(360deg);
     }
+  }
+}
+
+@mixin animation-fadeIn($duration, $delay: 0s) {
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn $duration $delay forwards;
+}
+
+@mixin media-mobile {
+  @media screen and (max-width: 550px) {
+    @content;
   }
 }
