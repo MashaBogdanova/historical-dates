@@ -1,0 +1,20 @@
+@import "../../../sass/variables";
+@import "../../../sass/mixins";
+
+.slider {
+  &__button_left,
+  &__button_right {
+    @include circleButton(7rem);
+    align-self: center;
+
+    height: 4rem;
+
+    background-color: $color-light;
+    box-shadow: 0 0 1.5rem 0 rgba(56, 119, 238, 0.1);
+    border: none;
+  }
+}
+
+.swiper-button-disabled {
+  opacity: 0;
+}

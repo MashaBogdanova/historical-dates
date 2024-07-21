@@ -4,8 +4,9 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
 import 'swiper/scss';
 import 'swiper/css/navigation';
-import {Period, Years} from "@/mocks/dates-mock";
+import {Years} from "@/mocks/dates-mock";
 import styles from "./slider.module.scss";
+import "./slider.scss";
 import React from "react";
 import {CgChevronLeft, CgChevronRight} from "react-icons/cg";
 
@@ -15,14 +16,17 @@ export default function Slider({events}: Years) {
 
     return (
         <section className={styles.slider}>
-            <button className={`${styles.slider__button} ${styles["slider__button_left"]}`}>
+            <button className="slider__button_left">
                 <CgChevronLeft className={styles.slider__arrow}/>
             </button>
             <Swiper
                 modules={[Navigation]}
                 spaceBetween={80}
                 slidesPerView={3}
-                navigation={{prevEl: '.slider__arrow_left', nextEl: '.slider__arrow_right'}}
+                navigation={{
+                    prevEl: '.slider__button_left',
+                    nextEl: '.slider__button_right',
+                }}
             >
                 {years.map((year) => {
                     return (
@@ -33,7 +37,7 @@ export default function Slider({events}: Years) {
                     )
                 })}
             </Swiper>
-            <button className={`${styles.slider__button} ${styles["slider__button_right"]}`}>
+            <button className="slider__button_right">
                 <CgChevronRight className={styles.slider__arrow}/>
             </button>
         </section>
