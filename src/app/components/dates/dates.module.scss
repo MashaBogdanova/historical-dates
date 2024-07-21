@@ -4,7 +4,7 @@
   position: absolute;
   top: $circle-top-space;
   left: 50%;
-  pointer-events: none;
+  z-index: 0;
 
   display: flex;
   justify-content: center;
