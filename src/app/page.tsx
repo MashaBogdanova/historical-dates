@@ -30,7 +30,7 @@ export default function Home() {
         <main className={styles.main}>
             <h1 className={styles.main__title}>Исторические<br/>даты</h1>
             <Lines/>
-            <Circle offsetAngle={offsetAngle} setCurrentPeriodIndex={setCurrentPeriodIndex} dates={dates} setOffsetAngle={setOffsetAngle}/>
+            <Circle offsetAngle={offsetAngle} currentPeriodIndex={currentPeriodIndex} setCurrentPeriodIndex={setCurrentPeriodIndex} dates={dates} setOffsetAngle={setOffsetAngle}/>
             <Dates startDate={currentPeriodData.start} endDate={currentPeriodData.end}/>
             <Pagination
                 currentPeriodIndex={currentPeriodIndex}

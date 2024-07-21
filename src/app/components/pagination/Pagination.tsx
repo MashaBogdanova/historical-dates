@@ -21,9 +21,6 @@ function Pagination({currentPeriodIndex, setCurrentPeriodIndex, setOffsetAngle, 
         setCurrentPage(currentPeriodIndex + 1);
     }, [currentPeriodIndex])
 
-
-    const arrowSize = 12.5;
-
     const isLeftButtonInactive = (page) => page === 1;
     const isRightButtonInactive = (page, total) => page === total;
     function handleLeftClick (){
