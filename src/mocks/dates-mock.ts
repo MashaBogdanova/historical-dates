@@ -1,10 +1,10 @@
 export type DatesData = Period[];
 
 export interface Period {
-  start: number;
-  end: number;
-  theme: Theme;
-  years: Years;
+  startDate: number;
+  endDate: number;
+  periodTheme: Theme;
+  eventsSet: Years;
 }
 
 export type Theme =
@@ -19,12 +19,12 @@ export interface Years {
   [key: number]: string;
 }
 
-export const datesData: DatesData = [
+export const dates: DatesData = [
   {
-    start: 1995,
-    end: 1999,
-    theme: "Технологии",
-    years: {
+    startDate: 1995,
+    endDate: 1999,
+    periodTheme: "Технологии",
+    eventsSet: {
       1995: "JavaScript был изобретен Брэнданом Эйхом в Netscape",
       1996: "DVD был представлен компанией Toshiba",
       1997: "Wi-Fi был впервые стандартизирован как 802.11",
@@ -33,10 +33,10 @@ export const datesData: DatesData = [
     },
   },
   {
-    start: 2000,
-    end: 2004,
-    theme: "Кино",
-    years: {
+    startDate: 2000,
+    endDate: 2004,
+    periodTheme: "Кино",
+    eventsSet: {
       2000: '"Брат 2" / "Brother 2", Россия (Алексей Балабанов)',
       2001: '"Мулен Руж!" / "Moulin Rouge!", США (Баз Лурман)',
       2002: '"Пианист" / "The Pianist", Франция (Роман Полански)',
@@ -47,10 +47,10 @@ export const datesData: DatesData = [
     },
   },
   {
-    start: 2005,
-    end: 2009,
-    theme: "Литература",
-    years: {
+    startDate: 2005,
+    endDate: 2009,
+    periodTheme: "Литература",
+    eventsSet: {
       2005:
         '"Гарри Поттер и Принц-полукровка" / "Harry Potter and the Half-Blood Prince", ' +
         "Великобритания (J.K. Rowling)",
@@ -61,10 +61,10 @@ export const datesData: DatesData = [
     },
   },
   {
-    start: 2010,
-    end: 2014,
-    theme: "Музыка",
-    years: {
+    startDate: 2010,
+    endDate: 2014,
+    periodTheme: "Музыка",
+    eventsSet: {
       2010: '"Love the Way You Lie", США (Eminem, Rihanna)',
       2011: '"Rolling in the Deep", Великобритания (Adele)',
       2012: '"Gangnam Style", Южная Корея (PSY)',
@@ -73,10 +73,10 @@ export const datesData: DatesData = [
     },
   },
   {
-    start: 2015,
-    end: 2019,
-    theme: "Спорт",
-    years: {
+    startDate: 2015,
+    endDate: 2019,
+    periodTheme: "Спорт",
+    eventsSet: {
       2015:
         "В 2015 году в США, американский боец ММА Ронда Роузи защитила свой " +
         "титул чемпиона UFC в наилегчайшем весе",
@@ -95,10 +95,10 @@ export const datesData: DatesData = [
     },
   },
   {
-    start: 2020,
-    end: 2024,
-    theme: "Наука",
-    years: {
+    startDate: 2020,
+    endDate: 2024,
+    periodTheme: "Наука",
+    eventsSet: {
       2020:
         "В 2020 году американские ученые Дженнифер Дудна и Эммануэль Шарпантье " +
         "получили Нобелевскую премию по химии за CRISPR-Cas9",

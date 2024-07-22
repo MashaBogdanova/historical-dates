@@ -2,15 +2,17 @@
 
 import React, { useEffect, useState } from "react";
 
+import { useCurrentPeriod } from "@/context/CurrentPeriodContext";
+
 import styles from "./dates.module.scss";
 
-interface Props {
-  startDate: number;
-  endDate: number;
-}
-export default function Dates({ startDate, endDate }: Props) {
-  const [displayStartDate, setDisplayStartDate] = useState(startDate);
-  const [displayEndDate, setDisplayEndDate] = useState(endDate);
+export default function Dates() {
+  const { currentPeriod } = useCurrentPeriod();
+
+  const [displayStartDate, setDisplayStartDate] = useState(
+    currentPeriod.startDate,
+  );
+  const [displayEndDate, setDisplayEndDate] = useState(currentPeriod.endDate);
 
   useEffect(() => {
     const updateValue = (currentValue, targetValue, setValue) => {
@@ -21,12 +23,21 @@ export default function Dates({ startDate, endDate }: Props) {
     };
 
     const intervalId = setInterval(() => {
-      updateValue(displayStartDate, startDate, setDisplayStartDate);
-      updateValue(displayEndDate, endDate, setDisplayEndDate);
+      updateValue(
+        displayStartDate,
+        currentPeriod.startDate,
+        setDisplayStartDate,
+      );
+      updateValue(displayEndDate, currentPeriod.endDate, setDisplayEndDate);
     }, 50);
 
     return () => clearInterval(intervalId);
-  }, [startDate, endDate, displayStartDate, displayEndDate]);
+  }, [
+    currentPeriod.startDate,
+    currentPeriod.endDate,
+    displayStartDate,
+    displayEndDate,
+  ]);
 
   return (
     <section className={styles.dates}>

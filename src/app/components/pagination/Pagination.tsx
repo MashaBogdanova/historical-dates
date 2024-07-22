@@ -3,23 +3,22 @@
 import React, { useEffect, useState } from "react";
 import { CgChevronLeft, CgChevronRight } from "react-icons/cg";
 
+import { useCurrentPeriod } from "@/context/CurrentPeriodContext";
+import { useDates } from "@/context/DatesContext";
+
 import styles from "./pagination.module.scss";
 
 interface Props {
-  currentPeriodIndex: number;
-  setCurrentPeriodIndex: () => void;
-  setOffsetAngle: () => void;
-  totalPagesNumber: number;
+  // eslint-disable-next-line no-unused-vars
+  setOffsetAngle: (offsetAngle: number) => void;
 }
 
-function Pagination({
-  currentPeriodIndex,
-  setCurrentPeriodIndex,
-  setOffsetAngle,
-  totalPagesNumber,
-}: Props) {
+function Pagination({ setOffsetAngle }: Props) {
+  const { dates } = useDates();
+  const { currentPeriodIndex, setCurrentPeriodIndex } = useCurrentPeriod();
   const [currentPage, setCurrentPage] = useState(1);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
+  const totalPagesNumber = dates.length;
 
   useEffect(() => {
     setCurrentPeriodIndex(currentPage - 1);

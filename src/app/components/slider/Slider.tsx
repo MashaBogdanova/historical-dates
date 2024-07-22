@@ -8,23 +8,19 @@ import React from "react";
 import { CgChevronLeft, CgChevronRight } from "react-icons/cg";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import { Theme, Years } from "@/mocks/dates-mock";
-
-import styles from "./slider.module.scss";
 import { NavigationOptions } from "swiper/types";
 
-interface Props {
-  theme: Theme;
-  events: Years;
-}
+import { useCurrentPeriod } from "@/context/CurrentPeriodContext";
 
-export default function Slider({ theme, events }: Props) {
-  const years = Object.keys(events);
+import styles from "./slider.module.scss";
+
+export default function Slider() {
+  const { currentPeriod } = useCurrentPeriod();
+  const years = Object.keys(currentPeriod.eventsSet);
 
   return (
     <section className={styles.slider}>
-      <h3 className={styles.slider__theme}>{theme}</h3>
+      <h3 className={styles.slider__theme}>{currentPeriod.periodTheme}</h3>
       <hr className={styles.slider__divider} />
       <div className={styles.slider__sliderContainer}>
         <button className="slider__button_left">
@@ -56,7 +52,7 @@ export default function Slider({ theme, events }: Props) {
             return (
               <SwiperSlide key={year}>
                 <h4 className={styles.slider__year}>{year}</h4>
-                <p>{events[year]}</p>
+                <p>{currentPeriod.eventsSet[year]}</p>
               </SwiperSlide>
             );
           })}

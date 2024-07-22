@@ -2,29 +2,22 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { Period } from "@/mocks/dates-mock";
+import { useDates } from "@/context/DatesContext";
 import generatePoints from "@/utils/generatePoints";
 
 import styles from "./circle.module.scss";
 
 interface Props {
   offsetAngle: number;
-  dates: Period[];
-  currentPeriodIndex: number;
-  setCurrentPeriodIndex: () => void;
-  setOffsetAngle: () => void;
+  // eslint-disable-next-line no-unused-vars
+  setOffsetAngle: (offsetAngle: number) => void;
 }
 
-export default function Circle({
-  offsetAngle,
-  dates,
-  currentPeriodIndex,
-  setCurrentPeriodIndex,
-  setOffsetAngle,
-}: Props) {
+export default function Circle({ offsetAngle, setOffsetAngle }: Props) {
   // You can dynamically change number of points, for example, it may depend on backand response
   // Circle radius is calculated dynamically
 
+  const { dates } = useDates();
   const circleElement = useRef<HTMLDivElement | null>(null);
   const [radius, setRadius] = useState(256);
 
@@ -56,8 +49,6 @@ export default function Circle({
     radius,
     dates,
     offsetAngle,
-    currentPeriodIndex,
-    setCurrentPeriodIndex,
     rotateCircle,
   });
 

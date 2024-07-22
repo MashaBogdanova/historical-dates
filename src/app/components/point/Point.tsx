@@ -1,4 +1,4 @@
-import { Theme } from "@/mocks/dates-mock";
+import { useCurrentPeriod } from "@/context/CurrentPeriodContext";
 
 import styles from "./point.module.scss";
 
@@ -7,22 +7,14 @@ interface Props {
   x: number;
   y: number;
   offsetAngle: number;
-  theme: Theme;
-  currentPeriodIndex: number;
-  setCurrentPeriodIndex: () => void;
-  rotateCircle: () => void;
+  // eslint-disable-next-line no-unused-vars
+  rotateCircle: (index: number) => void;
 }
 
-function Point({
-  index,
-  x,
-  y,
-  offsetAngle,
-  theme,
-  currentPeriodIndex,
-  setCurrentPeriodIndex,
-  rotateCircle,
-}: Props) {
+function Point({ index, x, y, offsetAngle, rotateCircle }: Props) {
+  const { currentPeriod, currentPeriodIndex, setCurrentPeriodIndex } =
+    useCurrentPeriod();
+
   function handleClick() {
     setCurrentPeriodIndex(index);
     rotateCircle(index);
@@ -40,7 +32,7 @@ function Point({
       <p className={styles.point__number} onClick={handleClick}>
         {index + 1}
       </p>
-      <p className={styles.point__theme}>{theme}</p>
+      <p className={styles.point__theme}>{currentPeriod.periodTheme}</p>
     </div>
   );
 }

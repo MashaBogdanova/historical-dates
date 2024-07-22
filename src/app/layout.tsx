@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Bebas_Neue, PT_Sans } from "next/font/google";
 import React from "react";
 
+import { DatesProvider } from "@/context/DatesContext";
+
 const fontPrimary = PT_Sans({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -30,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${fontPrimary.variable} ${fontSecondary.variable}`}>
-        {children}
+        <DatesProvider>{children}</DatesProvider>
       </body>
     </html>
   );

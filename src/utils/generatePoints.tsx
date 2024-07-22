@@ -5,23 +5,20 @@ interface Props {
   radius: number;
   dates: Period[];
   offsetAngle: number;
-  currentPeriodIndex: number;
-  setCurrentPeriodIndex: () => void;
-  rotateCircle: () => void;
+  // eslint-disable-next-line no-unused-vars
+  rotateCircle: (index: number) => void;
 }
 
 export default function generatePoints({
   radius,
   dates,
   offsetAngle,
-  currentPeriodIndex,
-  setCurrentPeriodIndex,
   rotateCircle,
 }: Props) {
-  const numberOfPoints = dates.length;
+  const totalPointNumber = dates.length;
 
   return dates.map((date, index) => {
-    const angle = ((index - 1) / numberOfPoints) * (2 * Math.PI);
+    const angle = ((index - 1) / totalPointNumber) * (2 * Math.PI);
     const x = radius + radius * Math.cos(angle);
     const y = radius + radius * Math.sin(angle);
 
@@ -32,9 +29,6 @@ export default function generatePoints({
         x={x}
         y={y}
         offsetAngle={offsetAngle}
-        currentPeriodIndex={currentPeriodIndex}
-        theme={date.theme}
-        setCurrentPeriodIndex={setCurrentPeriodIndex}
         rotateCircle={rotateCircle}
       />
     );
