@@ -16,22 +16,16 @@ interface Props {
 export default function Pagination({ setOffsetAngle }: Props) {
   const { dates } = useDates();
   const { currentPeriodIndex, setCurrentPeriodIndex } = useCurrentPeriod();
-  const [currentPage, setCurrentPage] = useState(1);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
   const totalPagesNumber = dates.length;
 
   useEffect(() => {
-    setCurrentPeriodIndex(currentPage - 1);
-    setActiveDotIndex(currentPage - 1);
-  }, [currentPage]);
-
-  useEffect(() => {
-    setCurrentPage(currentPeriodIndex + 1);
+    setActiveDotIndex(currentPeriodIndex);
   }, [currentPeriodIndex]);
 
   function handleLeftClick() {
-    setCurrentPage((currentValue) =>
-      currentValue > 1 ? currentValue - 1 : currentValue,
+    setCurrentPeriodIndex((currentValue) =>
+      currentValue > 0 ? currentValue - 1 : currentValue,
     );
     setOffsetAngle(
       ((currentValue) => currentValue + 360 / totalPagesNumber) as number,
@@ -39,46 +33,52 @@ export default function Pagination({ setOffsetAngle }: Props) {
   }
 
   function handleRightClick() {
-    setCurrentPage((currentValue) =>
-      currentValue < totalPagesNumber ? currentValue + 1 : currentValue,
+    setCurrentPeriodIndex((currentValue) =>
+      currentValue < totalPagesNumber - 1 ? currentValue + 1 : currentValue,
     );
     setOffsetAngle(
       ((currentValue) => currentValue - 360 / totalPagesNumber) as number,
     );
   }
 
-  function handleDotClick(page) {
-    setCurrentPage(page);
+  function handleDotClick(index) {
+    setCurrentPeriodIndex(index);
   }
 
   return (
     <section className={styles.pagination}>
       <div>
         <p className={styles.pagination__currentPage}>
-          0{currentPage}/0{totalPagesNumber}
+          0{currentPeriodIndex + 1}/0{totalPagesNumber}
         </p>
         <div className={styles.pagination__buttonsContainer}>
           <button
-            className={`${styles.pagination__button} ${currentPage === 1 ? styles.pagination__button_inactive : ""}`}
+            className={`
+            ${styles.pagination__button} 
+            ${currentPeriodIndex === 0 ? styles.pagination__button_inactive : ""}
+            `}
             onClick={handleLeftClick}
-            disabled={currentPage === 1}
+            disabled={currentPeriodIndex === 0}
           >
             <CgChevronLeft
-              className={`${styles.pagination__arrow} ${currentPage === 1 ? styles.pagination__arrow_inactive : ""}`}
+              className={`
+              ${styles.pagination__arrow} 
+              ${currentPeriodIndex === 0 ? styles.pagination__arrow_inactive : ""}
+              `}
             />
           </button>
           <button
             className={`
             ${styles.pagination__button} 
-            ${currentPage === totalPagesNumber ? styles.pagination__button_inactive : ""}
+            ${currentPeriodIndex === totalPagesNumber - 1 ? styles.pagination__button_inactive : ""}
             `}
             onClick={handleRightClick}
-            disabled={currentPage === totalPagesNumber}
+            disabled={currentPeriodIndex === totalPagesNumber - 1}
           >
             <CgChevronRight
               className={`
               ${styles.pagination__arrow} 
-              ${currentPage === totalPagesNumber ? styles.pagination__arrow_inactive : ""}
+              ${currentPeriodIndex === totalPagesNumber - 1 ? styles.pagination__arrow_inactive : ""}
               `}
             />
           </button>
@@ -89,7 +89,7 @@ export default function Pagination({ setOffsetAngle }: Props) {
           <button
             key={index}
             className={`${styles.pagination__dot} ${index === activeDotIndex ? styles.pagination__dot_active : ""}`}
-            onClick={() => handleDotClick(index + 1)}
+            onClick={() => handleDotClick(index)}
           ></button>
         ))}
       </div>
