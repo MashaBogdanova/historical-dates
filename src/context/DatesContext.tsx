@@ -21,6 +21,10 @@ export const DatesProvider: React.FC<{ children: ReactNode }> = ({
   );
 };
 
-export const useDates = () => {
-  return useContext(DatesContext);
+export const useDates = (): DatesContextType => {
+  const context = useContext(DatesContext);
+  if (!context) {
+    throw new Error("Context is null");
+  }
+  return context;
 };

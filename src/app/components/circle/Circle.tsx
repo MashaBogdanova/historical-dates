@@ -11,7 +11,7 @@ import styles from "./circle.module.scss";
 interface Props {
   offsetAngle: number;
   // eslint-disable-next-line no-unused-vars
-  setOffsetAngle: (offsetAngle: number) => void;
+  setOffsetAngle: (updateFn: (currentOffsetAngle: number) => number) => void;
 }
 
 export default function Circle({ offsetAngle, setOffsetAngle }: Props) {
@@ -33,7 +33,7 @@ export default function Circle({ offsetAngle, setOffsetAngle }: Props) {
     const oneSegmentAngle = 360 / totalPointNumber;
     const rotateAngle = oneSegmentAngle * (totalPointNumber - index);
 
-    setOffsetAngle(((currentOffsetAngle) => {
+    setOffsetAngle((currentOffsetAngle: number) => {
       // difAngle is calculated to find the closest direction to rotate
       const difAngle = calculateRemainder(rotateAngle - currentOffsetAngle);
 
@@ -42,7 +42,7 @@ export default function Circle({ offsetAngle, setOffsetAngle }: Props) {
       } else {
         return currentOffsetAngle - (360 - difAngle);
       }
-    }) as number);
+    });
   }
 
   const points = generatePoints({

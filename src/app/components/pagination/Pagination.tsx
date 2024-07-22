@@ -10,7 +10,7 @@ import styles from "./pagination.module.scss";
 
 interface Props {
   // eslint-disable-next-line no-unused-vars
-  setOffsetAngle: (offsetAngle: number) => void;
+  setOffsetAngle: (updateFn: (currentOffsetAngle: number) => number) => void;
 }
 
 export default function Pagination({ setOffsetAngle }: Props) {
@@ -24,11 +24,11 @@ export default function Pagination({ setOffsetAngle }: Props) {
   }, [currentPeriodIndex]);
 
   function handleLeftClick() {
-    setCurrentPeriodIndex((currentValue) =>
+    setCurrentPeriodIndex((currentValue: number) =>
       currentValue > 0 ? currentValue - 1 : currentValue,
     );
     setOffsetAngle(
-      ((currentValue) => currentValue + 360 / totalPagesNumber) as number,
+      (currentValue: number) => currentValue + 360 / totalPagesNumber,
     );
   }
 
@@ -37,11 +37,11 @@ export default function Pagination({ setOffsetAngle }: Props) {
       currentValue < totalPagesNumber - 1 ? currentValue + 1 : currentValue,
     );
     setOffsetAngle(
-      ((currentValue) => currentValue - 360 / totalPagesNumber) as number,
+      (currentValue: number) => currentValue - 360 / totalPagesNumber,
     );
   }
 
-  function handleDotClick(index) {
+  function handleDotClick(index: number) {
     setCurrentPeriodIndex(index);
   }
 

@@ -14,7 +14,7 @@ import { useDates } from "@/context/DatesContext";
 import styles from "./page.module.scss";
 
 export default function Home() {
-  const [offsetAngle, setOffsetAngle] = useState(0);
+  const [offsetAngle, setOffsetAngle] = useState<number>(0);
   const { dates } = useDates();
 
   if (!dates) {

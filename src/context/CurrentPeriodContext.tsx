@@ -35,5 +35,9 @@ export const CurrentPeriodProvider: React.FC<{ children: ReactNode }> = ({
 };
 
 export const useCurrentPeriod = () => {
-  return useContext(CurrentPeriodContext);
+  const context = useContext(CurrentPeriodContext);
+  if (!context) {
+    throw new Error("Context is null");
+  }
+  return context;
 };

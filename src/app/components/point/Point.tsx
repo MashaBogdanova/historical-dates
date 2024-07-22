@@ -32,7 +32,7 @@ function Point({ index, x, y, offsetAngle, rotateCircle }: Props) {
       <p className={styles.point__number} onClick={handleClick}>
         {index + 1}
       </p>
-      <p className={styles.point__theme}>{currentPeriod.periodTheme}</p>
+      <p className={styles.point__theme}>{currentPeriod?.periodTheme}</p>
     </div>
   );
 }

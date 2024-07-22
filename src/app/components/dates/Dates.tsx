@@ -10,30 +10,30 @@ import styles from "./dates.module.scss";
 export default function Dates() {
   const { currentPeriod } = useCurrentPeriod();
   const [displayStartDate, setDisplayStartDate] = useState<number>(
-    currentPeriod.startDate,
+    currentPeriod!.startDate,
   );
   const [displayEndDate, setDisplayEndDate] = useState<number>(
-    currentPeriod.endDate,
+    currentPeriod!.endDate,
   );
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       updateDatesValue(
         displayStartDate,
-        currentPeriod.startDate,
+        currentPeriod!.startDate,
         setDisplayStartDate,
       );
       updateDatesValue(
         displayEndDate,
-        currentPeriod.endDate,
+        currentPeriod!.endDate,
         setDisplayEndDate,
       );
     }, 50);
 
     return () => clearInterval(intervalId);
   }, [
-    currentPeriod.startDate,
-    currentPeriod.endDate,
+    currentPeriod?.startDate,
+    currentPeriod?.endDate,
     displayStartDate,
     displayEndDate,
   ]);
