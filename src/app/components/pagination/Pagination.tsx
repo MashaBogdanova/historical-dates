@@ -13,7 +13,7 @@ interface Props {
   setOffsetAngle: (offsetAngle: number) => void;
 }
 
-function Pagination({ setOffsetAngle }: Props) {
+export default function Pagination({ setOffsetAngle }: Props) {
   const { dates } = useDates();
   const { currentPeriodIndex, setCurrentPeriodIndex } = useCurrentPeriod();
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,9 +28,6 @@ function Pagination({ setOffsetAngle }: Props) {
   useEffect(() => {
     setCurrentPage(currentPeriodIndex + 1);
   }, [currentPeriodIndex]);
-
-  const isLeftButtonInactive = (page) => page === 1;
-  const isRightButtonInactive = (page, total) => page === total;
 
   function handleLeftClick() {
     setCurrentPage((currentValue) =>
@@ -64,7 +61,7 @@ function Pagination({ setOffsetAngle }: Props) {
           <button
             className={`${styles.pagination__button} ${currentPage === 1 ? styles.pagination__button_inactive : ""}`}
             onClick={handleLeftClick}
-            disabled={isLeftButtonInactive(currentPage)}
+            disabled={currentPage === 1}
           >
             <CgChevronLeft
               className={`${styles.pagination__arrow} ${currentPage === 1 ? styles.pagination__arrow_inactive : ""}`}
@@ -76,7 +73,7 @@ function Pagination({ setOffsetAngle }: Props) {
             ${currentPage === totalPagesNumber ? styles.pagination__button_inactive : ""}
             `}
             onClick={handleRightClick}
-            disabled={isRightButtonInactive(currentPage, totalPagesNumber)}
+            disabled={currentPage === totalPagesNumber}
           >
             <CgChevronRight
               className={`
@@ -99,5 +96,3 @@ function Pagination({ setOffsetAngle }: Props) {
     </section>
   );
 }
-
-export default Pagination;

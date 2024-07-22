@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./lines.module.scss";
 
-function Lines() {
+export default function Lines() {
   return (
     <section className={styles.lines}>
       <div className={styles.lines__colorBorder} />
@@ -13,5 +13,3 @@ function Lines() {
     </section>
   );
 }
-
-export default Lines;

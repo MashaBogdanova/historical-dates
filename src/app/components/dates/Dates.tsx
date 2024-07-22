@@ -8,7 +8,6 @@ import styles from "./dates.module.scss";
 
 export default function Dates() {
   const { currentPeriod } = useCurrentPeriod();
-
   const [displayStartDate, setDisplayStartDate] = useState(
     currentPeriod.startDate,
   );

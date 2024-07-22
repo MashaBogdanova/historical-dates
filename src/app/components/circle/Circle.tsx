@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { useDates } from "@/context/DatesContext";
 import generatePoints from "@/utils/generatePoints";
+import divisionRemainder from "@/utils/getDivisionRemainder";
 
 import styles from "./circle.module.scss";
 
@@ -14,14 +15,12 @@ interface Props {
 }
 
 export default function Circle({ offsetAngle, setOffsetAngle }: Props) {
-  // You can dynamically change number of points, for example, it may depend on backand response
-  // Circle radius is calculated dynamically
-
   const { dates } = useDates();
-  const circleElement = useRef<HTMLDivElement | null>(null);
   const [radius, setRadius] = useState(256);
+  const circleElement = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    // Circle radius is calculated dynamically
     if (circleElement.current) {
       const width = circleElement.current?.offsetWidth;
       setRadius(width / 2);
@@ -29,6 +28,7 @@ export default function Circle({ offsetAngle, setOffsetAngle }: Props) {
   }, []);
 
   function rotateCircle(index: number) {
+    // You can dynamically change number of points, for example, it may depend on backand response
     const totalPointNumber = dates.length;
     const oneSegmentAngle = 360 / totalPointNumber;
     const rotateAngle = oneSegmentAngle * (totalPointNumber - index);
@@ -61,9 +61,4 @@ export default function Circle({ offsetAngle, setOffsetAngle }: Props) {
       {points}
     </section>
   );
-
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder
-  function divisionRemainder(angle) {
-    return ((angle % 360) + 360) % 360;
-  }
 }
