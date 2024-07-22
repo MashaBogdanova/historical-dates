@@ -10,6 +10,9 @@ interface CurrentPeriodContextInterface {
   setCurrentPeriodIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
+// In a real project, it would be more appropriate to use Redux for state management.
+// However, in this case, we're using Context because the state is small and simple.
+
 const CurrentPeriodContext =
   createContext<CurrentPeriodContextInterface | null>(null);
 
