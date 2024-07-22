@@ -3,31 +3,31 @@
 import React, { useEffect, useState } from "react";
 
 import { useCurrentPeriod } from "@/context/CurrentPeriodContext";
+import updateDatesValue from "@/utils/updateDatesValue";
 
 import styles from "./dates.module.scss";
 
 export default function Dates() {
   const { currentPeriod } = useCurrentPeriod();
-  const [displayStartDate, setDisplayStartDate] = useState(
+  const [displayStartDate, setDisplayStartDate] = useState<number>(
     currentPeriod.startDate,
   );
-  const [displayEndDate, setDisplayEndDate] = useState(currentPeriod.endDate);
+  const [displayEndDate, setDisplayEndDate] = useState<number>(
+    currentPeriod.endDate,
+  );
 
   useEffect(() => {
-    const updateValue = (currentValue, targetValue, setValue) => {
-      if (currentValue !== targetValue) {
-        const increment = currentValue < targetValue ? 1 : -1;
-        setTimeout(() => setValue(currentValue + increment), 15);
-      }
-    };
-
     const intervalId = setInterval(() => {
-      updateValue(
+      updateDatesValue(
         displayStartDate,
         currentPeriod.startDate,
         setDisplayStartDate,
       );
-      updateValue(displayEndDate, currentPeriod.endDate, setDisplayEndDate);
+      updateDatesValue(
+        displayEndDate,
+        currentPeriod.endDate,
+        setDisplayEndDate,
+      );
     }, 50);
 
     return () => clearInterval(intervalId);

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { useDates } from "@/context/DatesContext";
 import generatePoints from "@/utils/generatePoints";
-import divisionRemainder from "@/utils/getDivisionRemainder";
+import calculateRemainder from "@/utils/math";
 
 import styles from "./circle.module.scss";
 
@@ -35,7 +35,7 @@ export default function Circle({ offsetAngle, setOffsetAngle }: Props) {
 
     setOffsetAngle(((currentOffsetAngle) => {
       // difAngle is calculated to find the closest direction to rotate
-      const difAngle = divisionRemainder(rotateAngle - currentOffsetAngle);
+      const difAngle = calculateRemainder(rotateAngle - currentOffsetAngle);
 
       if (difAngle <= 180) {
         return currentOffsetAngle + difAngle;
