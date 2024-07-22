@@ -21,7 +21,7 @@
 
 .swiper-slide {
   opacity: 0;
-  @include animation-fadeIn(1000ms)
+  @include animation-fadeIn(1000ms);
 }
 
 @include media-mobile {

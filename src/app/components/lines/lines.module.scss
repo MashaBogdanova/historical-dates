@@ -1,7 +1,7 @@
 @import "../../../sass/mixins";
 
 .lines {
-  @include border ($color-primary-s);
+  @include border($color-primary-s);
   position: absolute;
   width: 100%;
   height: 100%;

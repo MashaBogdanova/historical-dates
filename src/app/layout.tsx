@@ -1,22 +1,25 @@
-import type { Metadata } from "next";
-import { PT_Sans, Bebas_Neue } from "next/font/google";
 import "./globals.scss";
 
+import type { Metadata } from "next";
+import { Bebas_Neue, PT_Sans } from "next/font/google";
+import React from "react";
+
 const fontPrimary = PT_Sans({
-    subsets: ["latin"],
-    weight: ["400", "700"],
-    variable: "--font-primary"
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-primary",
 });
 
 const fontSecondary = Bebas_Neue({
-    subsets: ["latin"],
-    weight: "400",
-    variable: "--font-secondary"
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-secondary",
 });
 
 export const metadata: Metadata = {
   title: "Исторические даты",
-  description: "Важные исторические события, произошедшие в разные периоды времени",
+  description:
+    "Важные исторические события, произошедшие в разные периоды времени",
 };
 
 export default function RootLayout({
@@ -26,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fontPrimary.variable} ${fontSecondary.variable}`}>{children}</body>
+      <body className={`${fontPrimary.variable} ${fontSecondary.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
